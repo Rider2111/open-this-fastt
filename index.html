@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open this fastt 💖</title>
+
+<style>
+body{
+  margin:0;
+  font-family:'Comic Sans MS','Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+.card{
+  background:#fff;
+  width:90%;
+  max-width:380px;
+  padding:25px;
+  border-radius:22px;
+  box-shadow:0 12px 35px rgba(0,0,0,0.25);
+  text-align:center;
+  position:relative;
+}
+
+h1{
+  color:#ff4d6d;
+  margin-bottom:10px;
+}
+
+p{
+  color:#555;
+  font-size:18px;
+}
+
+img{
+  width:100%;
+  border-radius:15px;
+  margin:15px 0;
+}
+
+.buttons{
+  margin-top:15px;
+  position:relative;
+  height:60px;
+}
+
+button{
+  padding:12px 22px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  transition:all 0.25s ease;
+}
+
+.yes{
+  background:#ff4d6d;
+  color:#fff;
+}
+
+.no{
+  background:#ddd;
+  color:#333;
+  position:absolute;
+  right:0;
+}
+
+.heart{
+  position:absolute;
+  font-size:18px;
+  animation:float 5s linear infinite;
+}
+
+@keyframes float{
+  from{transform:translateY(0);opacity:1;}
+  to{transform:translateY(-100vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+  <h1>Hey Kanika 🥺❤️</h1>
+
+  <!-- Replace this with your couple photo -->
+  <img src="couple.jpg" alt="Us">
+
+  <p id="question">Will you be my Valentine, Pyaaricetamol? 💘</p>
+
+  <div class="buttons">
+    <button class="yes" id="yesBtn" onclick="yesClicked()">Yes 😍</button>
+    <button class="no" id="noBtn" onclick="noClicked()">No 🙈</button>
+  </div>
+</div>
+
+<script>
+const questions = [
+  "Are you sure, Kannu? 🥺",
+  "Think again, Rasmalai 💔",
+  "Panda pleaseeee 😭",
+  "Kaniku don’t do this to me 🥹",
+  "Jaanam… last chance 🥺❤️",
+  "Chirmathi is breaking my heart 😭",
+  "Okay okay… but I’ll still ask 😌"
+];
+
+const excuses = [
+  "Finger slipped 😅",
+  "Phone glitch 📱",
+  "Misclick 😐",
+  "System error 🤨",
+  "Not allowed ❌"
+];
+
+let noCount = 0;
+let yesScale = 1;
+
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+
+function noClicked(){
+  document.getElementById("question").innerText =
+    questions[noCount % questions.length];
+
+  noBtn.innerText = excuses[noCount % excuses.length];
+
+  noBtn.style.left = Math.random()*200 - 100 + "px";
+  noBtn.style.top  = Math.random()*60 - 30 + "px";
+
+  noBtn.style.transform = "scale("+(1 - noCount*0.05)+")";
+
+  yesScale += 0.15;
+  yesBtn.style.transform = "scale("+yesScale+")";
+
+  noCount++;
+}
+
+function yesClicked(){
+  document.getElementById("card").innerHTML = `
+    <h1>YAYYYY 💖😭</h1>
+
+    <!-- Replace with final celebration photo -->
+    <img src="final.jpg" alt="Kanika">
+
+    <p style="font-size:20px;">
+      Mere har marz ki dava<br>
+      meri <b>Pyaaricetamol</b> ❤️
+    </p>
+
+    <p>
+      You just made me the happiest person alive 🥹💘<br>
+      Happy Valentine’s Day, Jaanam 🌹
+    </p>
+  `;
+
+  celebrate();
+}
+
+function celebrate(){
+  for(let i=0;i<35;i++){
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerText="❤️";
+    h.style.left=Math.random()*100+"vw";
+    h.style.animationDuration=(Math.random()*3+2)+"s";
+    document.body.appendChild(h);
+  }
+}
+</script>
+
+</body>
+</html>
